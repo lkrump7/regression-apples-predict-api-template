@@ -62,7 +62,13 @@ def _preprocess_data(data):
     
 
     feature_vector_df = feature_vector_df[(feature_vector_df['Commodities'] == 'APPLE GOLDEN DELICIOUS')]
-    predict_vector = feature_vector_df[['Total_Qty_Sold','Stock_On_Hand']]
+    feature_vector_df.drop(columns=["Date"],inplace=True,axis=1)
+
+   
+    
+    feature_vector_df.drop(columns=["Sales_Total", "Total_Kg_Sold","Low_Price","High_Price"],inplace=True,axis=1)
+
+    predict_vector = feature_vector_df[['Weight_Kg','Total_Qty_Sold','Stock_On_Hand']]
                                 
     # ------------------------------------------------------------------------
 
