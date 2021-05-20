@@ -63,7 +63,7 @@ def _preprocess_data(data):
 
     feature_vector_df = feature_vector_df[(feature_vector_df['Commodities'] == 'APPLE GOLDEN DELICIOUS')]
     feature_vector_df.drop(columns=["Date"],inplace=True,axis=1)
-
+    
    
     
     feature_vector_df.drop(columns=["Sales_Total", "Total_Kg_Sold","Low_Price","High_Price"],inplace=True,axis=1)

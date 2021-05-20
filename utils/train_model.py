@@ -20,7 +20,18 @@ from sklearn.tree import DecisionTreeRegressor
 train = pd.read_csv('data/train_data.csv')
 
 train = train[(train['Commodities'] == 'APPLE GOLDEN DELICIOUS')]
+#Filter out outliers using Interquartile Range method
+Q1 = train.quantile(0.25)
+Q3 = train.quantile(0.75)
+IQR = Q3 - Q1
 
+
+#filter out the outliers
+index = train[(train["avg_price_per_kg"] >= 15)].index
+index2 = train[(train["avg_price_per_kg"] >7) & (train["Weight_Kg"] == 400)].index
+#drop outliers
+train.drop(index, inplace=True)
+train.drop(index2, inplace=True)
 y_train = train['avg_price_per_kg']
 X_train = train[['Weight_Kg','Total_Qty_Sold','Stock_On_Hand']]
 
